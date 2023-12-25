@@ -11,10 +11,7 @@ const postSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    username: {
-      type: String,
-      required: true,
-    },
+    
     claps: {
       type: Number,
       default: 0,

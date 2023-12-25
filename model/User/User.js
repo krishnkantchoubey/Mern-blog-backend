@@ -10,15 +10,11 @@ const userSchema = new mongoose.Schema({
     email: {
         type:String,
         required: true,
-    },
-    username: {
-        type:String,
-        required: true,
     }, 
     role: {
         type:String,
         required: true,
-        enum:['user', 'admin'],
+        enum:["user", "admin"],
         default: "user",
     },
     password: {
@@ -26,7 +22,7 @@ const userSchema = new mongoose.Schema({
         required: true,
     }, 
     lastLogin: {
-        type:date,
+        type:Date,
         dafault: Date.now(),
     }, 
     isVerified: {
@@ -35,7 +31,7 @@ const userSchema = new mongoose.Schema({
     }, 
     accountLevel: {
         type: String,
-        enum: ["bronze", "silver", "gold"],
+        enum: ["bronze", "silver", "gold" ],
         default:"bronze",
     }, 
     profilePicture: {
@@ -44,7 +40,7 @@ const userSchema = new mongoose.Schema({
     }, 
     coverImage: {
         type:String,
-        required: "",
+        default: "",
     }, 
     bio: {
         type:String,
