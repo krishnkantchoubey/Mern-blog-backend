@@ -2,6 +2,8 @@ const http = require("http");
 const express = require("express");
 const usersRouter = require("./routes/users/usersRouter");
 const { notFound, globalErrHandler } = require("./middleware/globalErrorHandler");
+const categoryRouter = require("./routes/category/categoryRouter");
+
 require("./config/database")();
 
 //!Server
@@ -12,6 +14,7 @@ app.use(express.json()); //pass incoming data
 
 //Routes
 app.use("/api/v1/users", usersRouter);
+app.use("/api/v1/categories", categoryRouter);
 
 
 //? Not Found middleware

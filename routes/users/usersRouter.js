@@ -1,5 +1,9 @@
 const express = require("express");
-const { register, login, getProfile } = require("../../controllers/users/usersCtrl");
+const { 
+    register, 
+    login, 
+    getProfile ,
+  } = require("../../controllers/users/usersCtrl");
 const isLogin = require("../../middleware/isLoggin");
 
 

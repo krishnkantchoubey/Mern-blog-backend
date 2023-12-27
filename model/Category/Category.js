@@ -7,29 +7,34 @@ const categorySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
     author: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
     },
     shares: {
-        type: Number,
-        Default: 0,
-      },
- 
-    posts: 
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Post",
-      },
-    
+      type: Number,
+      default: 0,
+    },
+
+    posts: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+    },
   },
   {
-    timestamp: true,
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
+    toObject: {
+      virtuals: true,
+    },
   }
 );
 
-//compile schema to model
+//compile schema to  model
 
 const Category = mongoose.model("Category", categorySchema);
 

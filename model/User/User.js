@@ -1,86 +1,88 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 //schema
 
-const userSchema = new mongoose.Schema({
-    username:{
-        type:String,
-        required: true,
+const userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: true,
     },
     email: {
-        type:String,
-        required: true,
-    }, 
+      type: String,
+      required: true,
+    },
     role: {
-        type:String,
-        required: true,
-        enum:["user", "admin"],
-        default: "user",
+      type: String,
+      required: true,
+      enum: ["user", "admin"],
+      default: "user",
     },
     password: {
-        type:String,
-        required: true,
-    }, 
+      type: String,
+      required: true,
+    },
     lastLogin: {
-        type:Date,
-        dafault: Date.now(),
-    }, 
+      type: Date,
+      default: Date.now(),
+    },
     isVerified: {
-        type:String,
-        required: false,
-    }, 
+      type: Boolean,
+      default: false,
+    },
     accountLevel: {
-        type: String,
-        enum: ["bronze", "silver", "gold" ],
-        default:"bronze",
-    }, 
+      type: String,
+      enum: ["bronze", "silver", "gold"],
+      default: "bronze",
+    },
     profilePicture: {
-        type:String,
-        default: "",
-    }, 
+      type: String,
+      default: "",
+    },
     coverImage: {
-        type:String,
-        default: "",
-    }, 
+      type: String,
+      default: "",
+    },
     bio: {
-        type:String,
-    }, 
+      type: String,
+    },
     location: {
-        type:String,
+      type: String,
     },
     notificationPreferences: {
-        email:{type:String, default: true},
-        //....other notifications {sms}
+      email: { type: String, default: true },
+      //..other notifications (sms)
     },
     gender: {
-        type:String,
-        enum: ["male", "female", "prefer not to say", "non-binary"],
+      type: String,
+      enum: ["male", "female", "prefer not to say", "non-binary"],
     },
-    profileViewers: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}],
-    followers: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}],
-    blockedUsers: [{type: mongoose.Schema.Types.ObjectId, ref: "User"}],
-    posts: [{type: mongoose.Schema.Types.ObjectId, ref: "Post"}],
-    likedPosts: [{type:mongoose.Schema.Types.ObjectId, ref: "Post"}],
+    profileViewers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    blockedUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
+    likedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
     passwordResetToken: {
-        type: String,
+      type: String,
     },
-    passwordResetExpries: {
-        type: Date,
+    passwordResetExpires: {
+      type: Date,
     },
-    AccountVerificationToken: {
-        type: String,
+    accountVerificationToken: {
+      type: String,
     },
-    AccountVerificationExpries: {
-        type: Date,
+    accountVerificationExpires: {
+      type: Date,
     },
-},
-{
-    timestamp:true,
-}
+  },
+  {
+    timestamp: true,
+  }
 );
 
 //compile schema to model
 
-const User = mongoose.model ("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
 module.exports = User;

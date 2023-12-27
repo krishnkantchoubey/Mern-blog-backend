@@ -9,9 +9,8 @@ const postSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      default: "",
+      required: true,
     },
-    
     claps: {
       type: Number,
       default: 0,
@@ -27,25 +26,29 @@ const postSchema = new mongoose.Schema(
     },
     shares: {
       type: Number,
-      Default: 0,
+      default: 0,
     },
-    postViews: {
-      type: Number,
-      Default: 0,
-    },
+
+    postViews: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+
     category: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "Category",
     },
-    scheduledPublished: {
-      type: String,
+    shedduledPublished: {
+      type: Date,
       default: null,
     },
+
     likes: [
       {
         type: mongoose.Schema.Types.ObjectId,
-
         ref: "User",
       },
     ],
@@ -56,11 +59,9 @@ const postSchema = new mongoose.Schema(
         ref: "User",
       },
     ],
-
     comments: [
       {
         type: mongoose.Schema.Types.ObjectId,
-
         ref: "Comment",
       },
     ],
