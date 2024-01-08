@@ -8,7 +8,7 @@ const isLogin =  (req, res, next) => {
    
 
     //?Verify the token
-    jwt.verify(token, "anykey", async (err, decoded)=>{
+    jwt.verify(token, process.env.JWT_KEY, async (err, decoded)=>{
        //add user to request object;
        const userId = decoded?.user?.id;
         

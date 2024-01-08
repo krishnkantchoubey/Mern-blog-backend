@@ -5,11 +5,11 @@ const generateToken = (user) => {
     //create payload for user
     const payload = {
         user:{
-            id: user.id
+            id: user.id,
         }
     }
     //sign the token with a secret key
-    const token = jwt.sign(payload, 'anykey',{
+    const token = jwt.sign(payload, process.env.JWT_KEY,{
         expiresIn: 3600, //Expire 1 hr
     });
     return token;
